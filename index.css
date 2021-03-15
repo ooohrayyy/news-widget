@@ -45,3 +45,9 @@ h1 {
 }
 
 /* Стили новости */
+
+.article {
+  min-height: 100px;
+  padding: 10px;
+  border-bottom: 1px solid black;
+}
