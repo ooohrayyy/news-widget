@@ -8,7 +8,7 @@ export default class Widget {
 
   _create () {
     this._element = document.createElement('div');
-    this._element.classList.add('widget');
+    this._element.classList.add('widget', 'widget_closed');
 
     this._button = document.createElement('button');
     this._button.classList.add('widget__button');
@@ -16,7 +16,7 @@ export default class Widget {
     this._button.addEventListener('click', this._toggle);
 
     this._container = document.createElement('section');
-    this._container.classList.add('widget__container');
+    this._container.classList.add('widget__container', 'widget__container_closed');
 
     this._element.prepend(this._container);
     this._element.prepend(this._button);
@@ -26,9 +26,11 @@ export default class Widget {
 
   _toggle () {
     if (this._isOpen) {
+      this._element.classList.add('widget_closed');
       this._container.classList.add('widget__container_closed');
       this._isOpen = false;
     } else {
+      this._element.classList.remove('widget_closed');
       this._container.classList.remove('widget__container_closed');
       this._isOpen = true;
     }
