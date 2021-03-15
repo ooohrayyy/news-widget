@@ -37,6 +37,7 @@ h1 {
   font-weight: bold;
   background-color: #33bbff;
   cursor: pointer;
+  outline: none;
 }
 
 .widget__container {
