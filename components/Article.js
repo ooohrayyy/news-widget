@@ -42,4 +42,10 @@ export default class Article {
 
     return this._element;
   }
+
+  add () {
+    const article = this._create();
+
+    this._container.prepend(article);
+  }
 }
