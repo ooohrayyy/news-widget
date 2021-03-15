@@ -13,7 +13,7 @@ export default class Widget {
 
     this._button = document.createElement('button');
     this._button.classList.add('widget__button');
-    this._button.textContent = '⬆ Новости';
+    this._button.textContent = `⬆ Новости (${this._unreadCount})`;
     this._button.addEventListener('click', this._toggle);
     this._element.append(this._button);
 
@@ -28,12 +28,12 @@ export default class Widget {
     if (this._isOpen) {
       this._element.classList.add('widget_closed');
       this._container.classList.add('widget__container_closed');
-      this._button.textContent = '⬆ Новости';
+      this._button.textContent = `⬆ Новости (${this._unreadCount})`;
       this._isOpen = false;
     } else {
       this._element.classList.remove('widget_closed');
       this._container.classList.remove('widget__container_closed');
-      this._button.textContent = '⬇ Новости';
+      this._button.textContent = `⬇ Новости (${this._unreadCount})`;
       this._isOpen = true;
     }
   }
@@ -46,5 +46,16 @@ export default class Widget {
   addArticle (article, articleElement) {
     this._articles.push(article);
     this._container.append(articleElement);
+  }
+
+  refreshUnreadCount () {
+    this._unreadArticles = this._articles.filter(article => article.isRead === false);
+    this._unreadCount = this._unreadArticles.length;
+
+    if (this._isOpen) {
+      this._button.textContent = `⬇ Новости (${this._unreadCount})`;
+    } else {
+      this._button.textContent = `⬆ Новости (${this._unreadCount})`;
+    }
   }
 }

@@ -1,23 +1,27 @@
 export default class Article {
-  constructor (data) {
+  constructor (data, statusChangeHandler) {
     this._title = data.title;
     this._author = data.author;
     this._date = data.date;
     this._link = data.link;
-    this._isRead = false;
+    this.isRead = false;
+
+    this._reportStatusChange = statusChangeHandler;
 
     this._markStatus = this._markStatus.bind(this);
   }
 
   _markStatus () {
-    if (!this._isRead) {
-      this._isRead = true;
+    if (!this.isRead) {
+      this.isRead = true;
       this._element.classList.add('article_read');
       this._button.classList.add('article__status_read');
+      this._reportStatusChange();
     } else {
-      this._isRead = false;
+      this.isRead = false;
       this._element.classList.remove('article_read');
       this._button.classList.remove('article__status_read');
+      this._reportStatusChange();
     }
   }
 

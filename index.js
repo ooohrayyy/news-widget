@@ -8,7 +8,12 @@ const widget = new Widget(targetElement);
 widget.add();
 
 sourceExample.forEach(item => {
-  const article = new Article(item);
+  const article = new Article(
+    item,
+    () => widget.refreshUnreadCount()
+  );
   const articleElement = article.createElement();
   widget.addArticle(article, articleElement);
 });
+
+widget.refreshUnreadCount();
