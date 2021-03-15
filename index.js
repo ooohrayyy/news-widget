@@ -5,15 +5,15 @@ import { sourceExample } from './resources/sourceExample.js';
 const targetElement = document.querySelector('aside');
 
 const widget = new Widget(targetElement);
-widget.add();
+widget.addWidget();
 
 sourceExample.forEach(item => {
   const article = new Article(
     item,
-    () => widget.refreshUnreadCount()
+    () => widget.refreshUnreadCounter()
   );
   const articleElement = article.createElement();
-  widget.addArticle(article, articleElement);
+  widget.insertArticle(article, articleElement);
 });
 
-widget.refreshUnreadCount();
+widget.refreshUnreadCounter();

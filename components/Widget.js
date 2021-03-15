@@ -4,17 +4,17 @@ export default class Widget {
     this._articles = [];
     this._isOpen = false;
 
-    this._toggle = this._toggle.bind(this);
+    this._toggleState = this._toggleState.bind(this);
   }
 
-  _create () {
+  _createWidget () {
     this._element = document.createElement('div');
     this._element.classList.add('widget', 'widget_closed');
 
     this._button = document.createElement('button');
     this._button.classList.add('widget__button');
     this._button.textContent = `⬆ Новости (${this._unreadCount})`;
-    this._button.addEventListener('click', this._toggle);
+    this._button.addEventListener('click', this._toggleState);
     this._element.append(this._button);
 
     this._container = document.createElement('section');
@@ -24,7 +24,7 @@ export default class Widget {
     return this._element;
   }
 
-  _toggle () {
+  _toggleState () {
     if (this._isOpen) {
       this._element.classList.add('widget_closed');
       this._container.classList.add('widget__container_closed');
@@ -38,17 +38,17 @@ export default class Widget {
     }
   }
 
-  add () {
-    const widget = this._create();
+  addWidget () {
+    const widget = this._createWidget();
     this._target.prepend(widget);
   }
 
-  addArticle (article, articleElement) {
+  insertArticle (article, articleElement) {
     this._articles.push(article);
     this._container.append(articleElement);
   }
 
-  refreshUnreadCount () {
+  refreshUnreadCounter () {
     this._unreadArticles = this._articles.filter(article => article.isRead === false);
     this._unreadCount = this._unreadArticles.length;
 

@@ -15,12 +15,12 @@ export default class Article {
     if (!this.isRead) {
       this.isRead = true;
       this._element.classList.add('article_read');
-      this._button.classList.add('article__status_read');
+      this._buttonElement.classList.add('article__status_read');
       this._reportStatusChange();
     } else {
       this.isRead = false;
       this._element.classList.remove('article_read');
-      this._button.classList.remove('article__status_read');
+      this._buttonElement.classList.remove('article__status_read');
       this._reportStatusChange();
     }
   }
@@ -34,10 +34,10 @@ export default class Article {
     this._titleElement.textContent = this._title;
     this._element.append(this._titleElement);
 
-    this._button = document.createElement('button');
-    this._button.classList.add('article__status');
-    this._button.addEventListener('click', this._markStatus);
-    this._element.append(this._button);
+    this._buttonElement = document.createElement('button');
+    this._buttonElement.classList.add('article__status');
+    this._buttonElement.addEventListener('click', this._markStatus);
+    this._element.append(this._buttonElement);
 
     this._authorElement = document.createElement('p');
     this._authorElement.classList.add('article__author');
