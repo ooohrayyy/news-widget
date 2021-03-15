@@ -1,6 +1,7 @@
 export default class Widget {
   constructor (target) {
     this._target = target;
+    this._articles = [];
     this._isOpen = false;
 
     this._toggle = this._toggle.bind(this);
@@ -40,5 +41,10 @@ export default class Widget {
     const widget = this._create();
 
     this._target.prepend(widget);
+  }
+
+  addArticle (article, articleElement) {
+    this._articles.push(article);
+    this._container.append(articleElement);
   }
 }

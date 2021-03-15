@@ -1,7 +1,5 @@
 export default class Article {
-  constructor (container, data) {
-    this._container = container;
-
+  constructor (data) {
     this._title = data.title;
     this._author = data.author;
     this._date = data.date;
@@ -10,7 +8,7 @@ export default class Article {
     this._isRead = false;
   }
 
-  _create () {
+  createElement () {
     this._element = document.createElement('article');
     this._element.classList.add('widget__article', 'article');
 
@@ -41,11 +39,5 @@ export default class Article {
     this._element.append(this._linkElement);
 
     return this._element;
-  }
-
-  add () {
-    const article = this._create();
-
-    this._container.append(article);
   }
 }
