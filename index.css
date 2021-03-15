@@ -14,6 +14,28 @@ h1 {
   bottom: 5px;
   right: 30px;
   width: 350px;
+}
+
+.widget_closed {
+  bottom: 0;
+}
+
+.widget__button {
+  width: 350px;
+  min-height: 40px;
+  border: 1px solid black;
+  border-radius: 10px 10px 0 0;
+  font-weight: bold;
+  background-color: #33bbff;
+  cursor: pointer;
+}
+
+.widget__container {
   height: 600px;
-  border: 2px solid black;
+  border: 1px solid black;
+  border-top: none;
+}
+
+.widget__container_closed {
+  display: none;
 }
