@@ -1,17 +1,42 @@
 export default class Widget {
-  constructor () {
+  constructor (target) {
+    this._target = target;
+    this._isOpen = false;
 
+    this._toggle = this._toggle.bind(this);
+  }
+
+  _create () {
+    this._element = document.createElement('div');
+    this._element.classList.add('widget');
+
+    this._button = document.createElement('button');
+    this._button.classList.add('widget__button');
+    this._button.textContent = 'Новости';
+    this._button.addEventListener('click', this._toggle);
+
+    this._container = document.createElement('section');
+    this._container.classList.add('widget__container');
+
+    this._element.prepend(this._container);
+    this._element.prepend(this._button);
+
+    return this._element;
+  }
+
+  _toggle () {
+    if (this._isOpen) {
+      this._container.classList.add('widget__container_closed');
+      this._isOpen = false;
+    } else {
+      this._container.classList.remove('widget__container_closed');
+      this._isOpen = true;
+    }
   }
 
   add () {
-    
-  }
+    const widget = this._create();
 
-  _open () {
-
-  }
-
-  _close () {
-
+    this._target.prepend(widget);
   }
 }
