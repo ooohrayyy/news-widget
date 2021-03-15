@@ -86,6 +86,7 @@ h1 {
   background-repeat: no-repeat;
   background-color: transparent;
   cursor: pointer;
+  outline: none;
 }
 
 .article__status_read {
