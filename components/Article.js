@@ -4,8 +4,21 @@ export default class Article {
     this._author = data.author;
     this._date = data.date;
     this._link = data.link;
-
     this._isRead = false;
+
+    this._markStatus = this._markStatus.bind(this);
+  }
+
+  _markStatus () {
+    if (!this._isRead) {
+      this._isRead = true;
+      this._element.classList.add('article_read');
+      this._button.classList.add('article__status_read');
+    } else {
+      this._isRead = false;
+      this._element.classList.remove('article_read');
+      this._button.classList.remove('article__status_read');
+    }
   }
 
   createElement () {
@@ -19,6 +32,7 @@ export default class Article {
 
     this._button = document.createElement('button');
     this._button.classList.add('article__status');
+    this._button.addEventListener('click', this._markStatus);
     this._element.append(this._button);
 
     this._authorElement = document.createElement('p');
