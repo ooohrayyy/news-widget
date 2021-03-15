@@ -44,6 +44,7 @@ h1 {
   height: 600px;
   border: 1px solid black;
   border-top: none;
+  overflow: scroll;
 }
 
 .widget__container_closed {
@@ -60,11 +61,16 @@ h1 {
   background-color: #c7e9fa;
 }
 
+.article:last-of-type {
+  border-bottom: none;
+}
+
 .article_read {
   background-color: white;
 }
 
 .article__title {
+  font-size: 18px;
   margin-bottom: 5px;
 }
 
