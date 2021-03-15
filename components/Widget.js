@@ -15,12 +15,11 @@ export default class Widget {
     this._button.classList.add('widget__button');
     this._button.textContent = 'Новости';
     this._button.addEventListener('click', this._toggle);
+    this._element.append(this._button);
 
     this._container = document.createElement('section');
     this._container.classList.add('widget__container', 'widget__container_closed');
-
-    this._element.prepend(this._container);
-    this._element.prepend(this._button);
+    this._element.append(this._container);
 
     return this._element;
   }
@@ -39,7 +38,6 @@ export default class Widget {
 
   add () {
     const widget = this._create();
-
     this._target.prepend(widget);
   }
 
