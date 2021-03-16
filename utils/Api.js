@@ -16,3 +16,8 @@ class Api {
       .then(res => this._checkResponseData(res));
   }
 }
+
+export const api = new Api({
+  baseUrl: 'http://newsapi.org/v2/top-headlines?country=ru',
+  key: 'dfeecfd7437942a09109d3f8d4e7083c'
+});
