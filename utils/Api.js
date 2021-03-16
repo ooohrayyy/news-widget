@@ -10,4 +10,9 @@ class Api {
     }
     return res.json();
   }
+
+  getNews () {
+    return fetch(`${this._baseUrl}&apiKey=${this._key}`)
+      .then(res => this._checkResponseData(res));
+  }
 }
