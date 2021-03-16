@@ -34,9 +34,12 @@ buttonThree.addEventListener('click', () => {
   loadRemoteNews();
 });
 
-parent.insertBefore(buttonOne, sibling);
-parent.insertBefore(buttonTwo, sibling);
-parent.insertBefore(buttonThree, sibling);
+const buttons = [buttonOne, buttonTwo, buttonThree];
+
+buttons.forEach(button => {
+  button.classList.add('button');
+  parent.insertBefore(button, sibling)
+});
 
 // * Получение новостей
 
