@@ -21,6 +21,11 @@ export default class Widget {
     this._container.classList.add('widget__container', 'widget__container_closed');
     this._element.append(this._container);
 
+    this._loader = document.createElement('p');
+    this._loader.textContent = 'Пожалуйста, подождите...';
+    this._loader.classList.add('widget__loader');
+    this._container.append(this._loader);
+
     return this._element;
   }
 
@@ -53,6 +58,14 @@ export default class Widget {
       article.deleteElement();
     });
     this._articles = [];
+  }
+
+  toggleLoader () {
+    if (!this._loader.classList.contains('widget__loader_active')) {
+      this._loader.classList.add('widget__loader_active');
+    } else {
+      this._loader.classList.remove('widget__loader_active');
+    }
   }
 
   refreshCounter () { // Обновить счётчик непрочитанных новостей

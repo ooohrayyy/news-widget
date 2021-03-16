@@ -60,6 +60,8 @@ function loadLocalNews (source) { // Получение новостей из л
 
 function loadRemoteNews () { // Получение новостей из удалённого источника
   widget.clear();
+  widget.refreshCounter();
+  widget.toggleLoader();
 
   api.getNews()
     .then(res => {
@@ -88,6 +90,7 @@ function loadRemoteNews () { // Получение новостей из уда�
         widget.insert(article, articleElement);
       })
 
+      widget.toggleLoader();
       widget.refreshCounter();
     })
     .catch(err => console.log(err));
