@@ -23,6 +23,6 @@ class Api {
 }
 
 export const api = new Api({
-  baseUrl: 'http://newsapi.org/v2/top-headlines?country=ru',
+  baseUrl: 'https://newsapi.org/v2/top-headlines?country=ru',
   key: 'dfeecfd7437942a09109d3f8d4e7083c'
 });
