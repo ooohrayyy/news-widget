@@ -12,7 +12,12 @@ class Api {
   }
 
   getNews () {
-    return fetch(`${this._baseUrl}&apiKey=${this._key}`)
+    return fetch(`${this._baseUrl}`, {
+      method: 'GET',
+      headers: {
+        Authorization: this._key
+      }
+    })
       .then(res => this._checkResponseData(res));
   }
 }
