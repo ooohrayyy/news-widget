@@ -69,9 +69,9 @@ function loadRemoteNews () { // Получение новостей из уда�
         const processedArticle = {};
 
         processedArticle.title = article.title;
-        processedArticle.author = article.source.name;
-        processedArticle.date = article.publishedAt;
-        processedArticle.link = article.url;
+        processedArticle.author = article.source_name;
+        processedArticle.date = article.published_datetime;
+        processedArticle.link = article.article_url;
 
         return processedArticle;
       });

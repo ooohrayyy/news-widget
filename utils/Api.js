@@ -12,17 +12,15 @@ class Api {
   }
 
   getNews () {
-    return fetch(`${this._baseUrl}`, {
+    return fetch(`${this._baseUrl}?q=news&country=ru&language=ru&limit=20&api_token=${this._key}`, {
       method: 'GET',
-      headers: {
-        Authorization: this._key
-      }
+      redirect: 'follow'
     })
       .then(res => this._checkResponseData(res));
   }
 }
 
 export const api = new Api({
-  baseUrl: 'https://newsapi.org/v2/top-headlines?country=ru',
-  key: 'dfeecfd7437942a09109d3f8d4e7083c'
+  baseUrl: 'https://gnewsapi.net/api/search',
+  key: '6WXgPJLBFPzKnv9vt5IrMh8CNZGAC24yguwKwTMVseaqVLdeJXLgsRacxlOZ'
 });
