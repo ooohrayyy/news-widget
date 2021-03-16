@@ -48,6 +48,13 @@ export default class Widget {
     this._container.append(articleElement);
   }
 
+  clear () {
+    this._articles.forEach(article => {
+      article.deleteElement();
+    });
+    this._articles = [];
+  }
+
   refreshUnreadCounter () {
     this._unreadArticles = this._articles.filter(article => article.isRead === false);
     this._unreadCount = this._unreadArticles.length;

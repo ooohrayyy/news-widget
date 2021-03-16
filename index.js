@@ -13,6 +13,8 @@ widget.addWidget();
 // * Получение новостей
 
 function loadLocalNews (source) { // Получение новостей из локального источника
+  widget.clear();
+
   source.forEach(item => {
     const article = new Article(
       item,
@@ -26,6 +28,8 @@ function loadLocalNews (source) { // Получение новостей из л
 }
 
 function loadRemoteNews () { // Получение новостей из удалённого источника
+  widget.clear();
+
   api.getNews()
     .then(res => {
       const articles = res.articles;

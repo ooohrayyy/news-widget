@@ -58,4 +58,9 @@ export default class Article {
 
     return this._element;
   }
+
+  deleteElement () {
+    this._element.remove();
+    this._element = null;
+  }
 }
