@@ -7,7 +7,7 @@ export default class Widget {
     this._toggleState = this._toggleState.bind(this);
   }
 
-  _createWidget () {
+  _create () { // Создать виджет
     this._element = document.createElement('div');
     this._element.classList.add('widget', 'widget_closed');
 
@@ -24,7 +24,7 @@ export default class Widget {
     return this._element;
   }
 
-  _toggleState () {
+  _toggleState () { // Открыть или закрыть виджет
     if (this._isOpen) {
       this._element.classList.add('widget_closed');
       this._container.classList.add('widget__container_closed');
@@ -38,24 +38,24 @@ export default class Widget {
     }
   }
 
-  addWidget () {
-    const widget = this._createWidget();
+  add () { // Добавить виджет на страницу
+    const widget = this._create();
     this._target.prepend(widget);
   }
 
-  insertArticle (article, articleElement) {
+  insert (article, articleElement) { // Добавить новость в виджет
     this._articles.push(article);
     this._container.append(articleElement);
   }
 
-  clear () {
+  clear () { // Очистить виджет
     this._articles.forEach(article => {
       article.deleteElement();
     });
     this._articles = [];
   }
 
-  refreshUnreadCounter () {
+  refreshCounter () { // Обновить счётчик непрочитанных новостей
     this._unreadArticles = this._articles.filter(article => article.isRead === false);
     this._unreadCount = this._unreadArticles.length;
 

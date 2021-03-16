@@ -8,7 +8,8 @@ import { api } from './utils/Api.js';
 const targetElement = document.querySelector('aside');
 
 const widget = new Widget(targetElement);
-widget.addWidget();
+
+widget.add();
 
 // * Получение новостей
 
@@ -18,13 +19,13 @@ function loadLocalNews (source) { // Получение новостей из л
   source.forEach(item => {
     const article = new Article(
       item,
-      () => widget.refreshUnreadCounter()
+      () => widget.refreshCounter()
     );
     const articleElement = article.createElement();
-    widget.insertArticle(article, articleElement);
+    widget.insert(article, articleElement);
   });
 
-  widget.refreshUnreadCounter();
+  widget.refreshCounter();
 }
 
 function loadRemoteNews () { // Получение новостей из удалённого источника
@@ -51,13 +52,13 @@ function loadRemoteNews () { // Получение новостей из уда�
       processedArticles.forEach(item => {
         const article = new Article(
           item,
-          () => widget.refreshUnreadCounter()
+          () => widget.refreshCounter()
         );
         const articleElement = article.createElement();
-        widget.insertArticle(article, articleElement);
+        widget.insert(article, articleElement);
       })
 
-      widget.refreshUnreadCounter();
+      widget.refreshCounter();
     })
     .catch(err => console.log(err));
 }

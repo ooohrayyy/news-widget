@@ -8,10 +8,10 @@ export default class Article {
 
     this._reportStatusChange = statusChangeHandler;
 
-    this._markStatus = this._markStatus.bind(this);
+    this._changeStatus = this._changeStatus.bind(this);
   }
 
-  _markStatus () {
+  _changeStatus () { // Изменить статус новости
     if (!this.isRead) {
       this.isRead = true;
       this._element.classList.add('article_read');
@@ -25,7 +25,7 @@ export default class Article {
     }
   }
 
-  createElement () {
+  createElement () { // Создать элемент новости
     this._element = document.createElement('article');
     this._element.classList.add('widget__article', 'article');
 
@@ -36,7 +36,7 @@ export default class Article {
 
     this._buttonElement = document.createElement('button');
     this._buttonElement.classList.add('article__status');
-    this._buttonElement.addEventListener('click', this._markStatus);
+    this._buttonElement.addEventListener('click', this._changeStatus);
     this._element.append(this._buttonElement);
 
     this._authorElement = document.createElement('p');
@@ -59,7 +59,7 @@ export default class Article {
     return this._element;
   }
 
-  deleteElement () {
+  deleteElement () { // Удалить элемент новости
     this._element.remove();
     this._element = null;
   }
