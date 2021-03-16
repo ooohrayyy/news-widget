@@ -93,4 +93,4 @@ function loadRemoteNews () { // Получение новостей из уда�
     .catch(err => console.log(err));
 }
 
-loadLocalNews(sourceExample);
+loadLocalNews(sourceExample); // Получаем новости по умолчанию при загрузке страницы
